@@ -49,6 +49,32 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     };
 
+    const toggleTodoCompletion = async (id, completed) => {
+        try {
+            const response = await fetch(`/api/todos/${id}`, {
+                method: 'PATCH',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({ completed })
+            });
+
+            if (!response.ok) {
+                showFeedback('Failed to update todo', false);
+                return;
+            }
+
+            const todo = await response.json();
+            const todoLabel = document.querySelector(`label[for="todo-${id}"]`);
+            if (todoLabel) {
+                todoLabel.classList.toggle('completed', todo.completed);
+            }
+        } catch (error) {
+            showFeedback('Failed to update todo', false);
+            console.error('Error:', error);
+        }
+    };
+
     // Handle input changes to enable/disable button
     todoInput.addEventListener('input', () => {
         addButton.disabled = !todoInput.value.trim();
@@ -74,4 +100,12 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Initially disable button
     addButton.disabled = true;
+
+    // Add this event listener to handle checkbox clicks
+    todoList.addEventListener('change', (e) => {
+        if (e.target.type === 'checkbox') {
+            const id = e.target.id.replace('todo-', '');
+            toggleTodoCompletion(id, e.target.checked);
+        }
+    });
 });

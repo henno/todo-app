@@ -117,3 +117,12 @@ h1, p {
     clip: rect(0, 0, 0, 0);
     border: 0;
 }
+
+.todo-item label.completed {
+    text-decoration: line-through;
+    color: #888;
+}
+
+.todo-item input[type="checkbox"] {
+    cursor: pointer;
+}

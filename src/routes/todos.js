@@ -35,5 +35,28 @@ module.exports = (db) => {
     );
   });
 
+  router.patch('/:id', (req, res) => {
+    const { id } = req.params;
+    const { completed } = req.body;
+
+    if (typeof completed !== 'boolean') {
+      return res.status(400).json({ error: 'Completed status must be a boolean' });
+    }
+
+    db.query(
+      'UPDATE todos SET completed = ? WHERE id = ?',
+      [completed, id],
+      (err, result) => {
+        if (err) return res.status(500).json({ error: err.message });
+        if (result.affectedRows === 0) return res.status(404).json({ error: 'Todo not found' });
+        
+        db.query('SELECT * FROM todos WHERE id = ?', [id], (err, results) => {
+          if (err) return res.status(500).json({ error: err.message });
+          res.json(results[0]);
+        });
+      }
+    );
+  });
+
   return router;
 };

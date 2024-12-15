@@ -14,10 +14,14 @@ A simple, modern todo list application built with Node.js, Express, and MySQL th
   - Empty todos prevented
   - Visual feedback on creation
   - New todos appear at the top
+- Mark todos as complete/incomplete
+  - Checkbox for each todo item
+  - Visual indication of completed items
+  - Completion status persists
+  - Real-time status updates
 
 ## Coming Soon
 
-- Mark todos as complete/incomplete
 - Delete existing todos
 - Add descriptions to todos
 - Set due dates for tasks
