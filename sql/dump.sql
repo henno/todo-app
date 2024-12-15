@@ -1,6 +1,6 @@
 -- Create the database
-CREATE DATABASE todo_app;
-USE todo_app;
+CREATE DATABASE todo_app2;
+USE todo_app2;
 
 -- Create users table
 CREATE TABLE users (
