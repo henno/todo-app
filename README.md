@@ -8,10 +8,15 @@ A simple, modern todo list application built with Node.js, Express, and MySQL th
   - Scrollable list display
   - Clear title display
   - State persistence after page refresh
+- Create new todo items
+  - Input field for todo title
+  - Add button for creation
+  - Empty todos prevented
+  - Visual feedback on creation
+  - New todos appear at the top
 
 ## Coming Soon
 
-- Create new todo items
 - Mark todos as complete/incomplete
 - Delete existing todos
 - Add descriptions to todos

@@ -17,6 +17,7 @@ const db = mysql.createPool({
   database: process.env.DB_NAME
 });
 
+app.use(express.json());
 app.use(express.static(path.join(__dirname, 'views')));
 
 app.use('/api/todos', todosRouter(db));

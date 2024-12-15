@@ -10,9 +10,16 @@
 <div class="container">
     <h1>Todo List</h1>
     <p>View and manage your tasks.</p>
+    <div class="todo-form">
+        <label for="todo-input">New todo:</label>
+        <input type="text" id="todo-input" class="todo-input" placeholder="Enter new todo...">
+        <button class="add-button">Add</button>
+    </div>
+    <div class="feedback"></div>
     <div class="todo-list" id="todo-list"></div>
 </div>
 
+<script src="script.js"></script>
 <script>
   async function fetchTodos() {
     const response = await fetch('/api/todos');
